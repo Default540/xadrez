@@ -4,12 +4,9 @@ abstract class Peca {
 
     
     Peca(Cor c){
-        this.cor = c;
+        this.setCor(c);
     }
-    
-    Peca(){
 
-    }
     public void setCor(Cor cor){
         this.cor = cor; 
     }

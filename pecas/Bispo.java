@@ -4,10 +4,6 @@ public class Bispo extends Peca {
         super(c);
     }
 
-    Bispo() {
-
-    }
-
     @Override
     public boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro) {
 

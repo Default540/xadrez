@@ -3,9 +3,6 @@ public class Torre extends Peca {
     Torre(Cor c){
         super(c);
     }
-    Torre(){
-        
-    }
 
     @Override
     public boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro) {

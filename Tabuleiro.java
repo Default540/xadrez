@@ -1,14 +1,14 @@
 class Tabuleiro {
     
     private Peca[][] tabuleiro = {
-        {new Torre(), new Cavalo(), new Bispo(), new Rainha(), new Rei(), new Bispo(), new Cavalo(), new Torre()},
-        {new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao()},
+        {new Torre(Cor.PRETO), new Cavalo(Cor.PRETO), new Bispo(Cor.PRETO), new Rainha(Cor.PRETO), new Rei(Cor.PRETO), new Bispo(Cor.PRETO), new Cavalo(Cor.PRETO), new Torre(Cor.PRETO)},
+        {new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO)},
         {null, null, null, null, null, null, null, null},
         {null, null, null, null, null, null, null, null},
         {null, null, null, null, null, null, null, null},
         {null, null, null, null, null, null, null, null},
-        {new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao(), new Peao()},
-        {new Torre(), new Cavalo(), new Bispo(), new Rainha(), new Rei(), new Bispo(), new Cavalo(), new Torre()},
+        {new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO)},
+        {new Torre(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Bispo(Cor.BRANCO), new Rainha(Cor.BRANCO), new Rei(Cor.BRANCO), new Bispo(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Torre(Cor.BRANCO)},
     };
 
     Tabuleiro(Peca[][] tab){
@@ -28,22 +28,8 @@ class Tabuleiro {
         }
     }
 
-    public void setColors(){
-        for (int i = 0; i < tabuleiro.length; i++) {
-            for (int j = 0; j < tabuleiro.length; j++) {
-                if (tabuleiro[i][j] != null) {
-                    if (i < 2) {
-                        tabuleiro[i][j].setCor(Cor.PRETO);
-                    }else{
-                        tabuleiro[i][j].setCor(Cor.BRANCO);
-                    }
-                }
-            }
-        }
-    }
 
     Tabuleiro(){
-        setColors();
         updatePosition();
     }
 

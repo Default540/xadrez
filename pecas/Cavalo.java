@@ -3,9 +3,6 @@ public class Cavalo extends Peca {
     Cavalo(Cor c){
         super(c);
     }
-    Cavalo(){
-        
-    }
 
     @Override
     public boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro) {

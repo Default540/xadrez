@@ -3,9 +3,7 @@ class Rei extends Peca {
     Rei(Cor c){
         super(c);
     }
-    Rei(){
-        
-    }
+
 
     @Override
     public boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro) {

@@ -3,9 +3,6 @@ public class Peao extends Peca {
     Peao(Cor c){
         super(c);
     }
-    Peao(){
-        
-    }
     
     @Override
     public boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro) {
