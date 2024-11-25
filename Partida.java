@@ -53,9 +53,9 @@ class Partida {
             }
 
             while (true) {
-                System.out.println("Qual peca mover? X jogardor: "+ this.turno.getJogador().getCor());
+                System.out.println("Qual peca mover? Linha jogardor: "+ this.turno.getJogador().getCor());
                 int xInicial = s.nextInt();
-                System.out.println("Qual peca mover? Y jogardor: "+ this.turno.getJogador().getCor());
+                System.out.println("Qual peca mover? Coluna jogardor: "+ this.turno.getJogador().getCor());
                 int yInicial = s.nextInt();
 
                 boolean inTable = xInicial >= 0 && xInicial < 8 && yInicial >= 0 && yInicial < 8;
@@ -68,9 +68,9 @@ class Partida {
                     continue;
                 }
 
-                System.out.println("Para aonde devo mover? X jogador: "+ this.turno.getJogador().getCor());
+                System.out.println("Para aonde devo mover? Linha jogador: "+ this.turno.getJogador().getCor());
                 int xFinal = s.nextInt();
-                System.out.println("Para aonde devo mover? Y jogardor: "+ this.turno.getJogador().getCor());
+                System.out.println("Para aonde devo mover? Coluna jogardor: "+ this.turno.getJogador().getCor());
                 int yFinal = s.nextInt();
 
                 
@@ -109,8 +109,8 @@ class Partida {
             System.out.println("Jogador: "+turno.getJogador().getCor());
             System.out.println("Status: "+ turno.getStatus());
             System.out.println("Peça movida: "+turno.getPecaMovida());
-            System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" X, " + turno.getLocalInicio().getPosicaoY() + " Y");
-            System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " X, " + turno.getLocalFinal().getPosicaoY()+" Y");
+            System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" Linha, " + turno.getLocalInicio().getPosicaoY() + " Coluna");
+            System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " Linha, " + turno.getLocalFinal().getPosicaoY()+" Coluna");
             System.out.println("-----------------------");
         }
         
