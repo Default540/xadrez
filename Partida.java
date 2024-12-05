@@ -58,7 +58,11 @@ class Partida {
                 int yInicial = s.nextInt();
 
                 boolean inTable = xInicial >= 0 && xInicial < 8 && yInicial >= 0 && yInicial < 8;
+                boolean inTable = xInicial >= 0 && xInicial < 8 && yInicial >= 0 && yInicial < 8;
 
+                if (inTable && this.tabuleiro.getTabuleiro()[xInicial][yInicial] != null && this.tabuleiro.getTabuleiro()[xInicial][yInicial].getCor() == turno.getJogador().getCor()) {
+                    this.turno.setPecaMovida(this.tabuleiro.getTabuleiro()[xInicial][yInicial]);
+                    this.turno.setLocalInicio(new Posicao(xInicial, yInicial));
                 if (inTable && this.tabuleiro.getTabuleiro()[xInicial][yInicial] != null && this.tabuleiro.getTabuleiro()[xInicial][yInicial].getCor() == turno.getJogador().getCor()) {
                     this.turno.setPecaMovida(this.tabuleiro.getTabuleiro()[xInicial][yInicial]);
                     this.turno.setLocalInicio(new Posicao(xInicial, yInicial));
@@ -73,7 +77,9 @@ class Partida {
                 
                 
                 if (this.turno.getPecaMovida().movimentoValido(new Posicao(xFinal, yFinal), tabuleiro)) {
+                if (this.turno.getPecaMovida().movimentoValido(new Posicao(xFinal, yFinal), tabuleiro)) {
                     
+                    this.turno.setLocalFinal(new Posicao(xFinal, yFinal));
                     this.turno.setLocalFinal(new Posicao(xFinal, yFinal));
                     
                     this.tabuleiro.getTabuleiro()[this.turno.getLocalInicio().getPosicaoX()][this.turno.getLocalInicio().getPosicaoY()] = null;
@@ -106,6 +112,8 @@ class Partida {
             System.out.println("Jogador: "+turno.getJogador().getCor());
             System.out.println("Status: "+ turno.getStatus());
             System.out.println("Peça movida: "+turno.getPecaMovida());
+            System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" Linha, " + turno.getLocalInicio().getPosicaoY() + " Coluna");
+            System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " Linha, " + turno.getLocalFinal().getPosicaoY()+" Coluna");
             System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" Linha, " + turno.getLocalInicio().getPosicaoY() + " Coluna");
             System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " Linha, " + turno.getLocalFinal().getPosicaoY()+" Coluna");
             System.out.println("-----------------------");
