@@ -53,34 +53,28 @@ class Partida {
             }
 
             while (true) {
-                System.out.println("Qual peca mover? X jogardor: "+ this.turno.getJogador().getCor());
-                int x = s.nextInt();
-                System.out.println("Qual peca mover? Y jogardor: "+ this.turno.getJogador().getCor());
-                int y = s.nextInt();
+                System.out.println("Qual peca mover? Linha/Coluna jogardor: "+ this.turno.getJogador().getCor());
+                int xInicial = s.nextInt();
+                int yInicial = s.nextInt();
 
-                boolean inTable = x >= 0 && x < 8 && y >= 0 && y < 8;
+                boolean inTable = xInicial >= 0 && xInicial < 8 && yInicial >= 0 && yInicial < 8;
 
-                if (inTable && this.tabuleiro.getTabuleiro()[x][y] != null && this.tabuleiro.getTabuleiro()[x][y].getCor() == turno.getJogador().getCor()) {
-                    this.turno.setPecaMovida(this.tabuleiro.getTabuleiro()[x][y]);
-                    this.turno.setLocalInicio(new Posicao(x, y));
-                    break;
+                if (inTable && this.tabuleiro.getTabuleiro()[xInicial][yInicial] != null && this.tabuleiro.getTabuleiro()[xInicial][yInicial].getCor() == turno.getJogador().getCor()) {
+                    this.turno.setPecaMovida(this.tabuleiro.getTabuleiro()[xInicial][yInicial]);
+                    this.turno.setLocalInicio(new Posicao(xInicial, yInicial));
                 }else{
                     System.out.println("Posição invalida!!");  
+                    continue;
                 }
-            }
 
-
-            while (true) {
-                System.out.println("Para aonde devo mover? X jogador: "+ this.turno.getJogador().getCor());
-                int x = s.nextInt();
-                System.out.println("Para aonde devo mover? Y jogardor: "+ this.turno.getJogador().getCor());
-                int y = s.nextInt();
-
+                System.out.println("Para onde devo mover? Linha/Coluna jogador: "+ this.turno.getJogador().getCor());
+                int xFinal = s.nextInt();
+                int yFinal = s.nextInt();
                 
                 
-                if (this.turno.getPecaMovida().movimentoValido(new Posicao(x, y), tabuleiro)) {
+                if (this.turno.getPecaMovida().movimentoValido(new Posicao(xFinal, yFinal), tabuleiro)) {
                     
-                    this.turno.setLocalFinal(new Posicao(x, y));
+                    this.turno.setLocalFinal(new Posicao(xFinal, yFinal));
                     
                     this.tabuleiro.getTabuleiro()[this.turno.getLocalInicio().getPosicaoX()][this.turno.getLocalInicio().getPosicaoY()] = null;
                     this.tabuleiro.getTabuleiro()[this.turno.getLocalFinal().getPosicaoX()][this.turno.getLocalFinal().getPosicaoY()] = this.turno.getPecaMovida();
@@ -112,8 +106,8 @@ class Partida {
             System.out.println("Jogador: "+turno.getJogador().getCor());
             System.out.println("Status: "+ turno.getStatus());
             System.out.println("Peça movida: "+turno.getPecaMovida());
-            System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" X, " + turno.getLocalInicio().getPosicaoY() + " Y");
-            System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " X, " + turno.getLocalFinal().getPosicaoY()+" Y");
+            System.out.println("Local Inicial: "+ turno.getLocalInicio().getPosicaoX() +" Linha, " + turno.getLocalInicio().getPosicaoY() + " Coluna");
+            System.out.println("Local Final: " + turno.getLocalFinal().getPosicaoX()+ " Linha, " + turno.getLocalFinal().getPosicaoY()+" Coluna");
             System.out.println("-----------------------");
         }
         
