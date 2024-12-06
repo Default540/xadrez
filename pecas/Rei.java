@@ -10,6 +10,7 @@ class Rei extends Peca {
         int x = this.getPosicao().getPosicaoX();
         int y = this.getPosicao().getPosicaoY();
         
+        // Verifica se a posição de destino está dentro do tabuleiro
         boolean inTable = destino.getPosicaoX() >= 0 && destino.getPosicaoX() < 8 && destino.getPosicaoY() >= 0 && destino.getPosicaoY() < 8;
         if (!inTable) return false;
         
@@ -31,9 +32,9 @@ class Rei extends Peca {
         return validMoviment;
     }
 
-    private boolean isInCheckAfterMove(Posicao destino, Tabuleiro tabuleiro) {
+    @Override
+    protected boolean isInCheckAfterMove(Posicao destino, Tabuleiro tabuleiro) {
          
-        
          Posicao posicaoAtual = this.getPosicao();
         
          // Move o rei temporariamente para a posição de destino

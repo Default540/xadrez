@@ -61,6 +61,11 @@ public class Bispo extends Peca {
             }
             validMoviment = true;
         }
+        
+        if (validMoviment) {
+            // Verifica se o rei está em xeque após o movimento
+            if (isInCheckAfterMove(destino, tabuleiro)) return false;
+        }
 
         return validMoviment;
     }

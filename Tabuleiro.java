@@ -1,23 +1,19 @@
-class Tabuleiro {
-    
-    private Peca[][] tabuleiro = {
-        {new Torre(Cor.PRETO), new Cavalo(Cor.PRETO), new Bispo(Cor.PRETO), new Rainha(Cor.PRETO), new Rei(Cor.PRETO), new Bispo(Cor.PRETO), new Cavalo(Cor.PRETO), new Torre(Cor.PRETO)},
-        {new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO), new Peao(Cor.PRETO)},
-        {null, null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null, null},
-        {null, null, null, null, null, null, null, null},
-        {new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO)},
-        {new Torre(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Bispo(Cor.BRANCO), new Rainha(Cor.BRANCO), new Rei(Cor.BRANCO), new Bispo(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Torre(Cor.BRANCO)},
-    };
+public class Tabuleiro {
+    private Peca[][] tabuleiro;
     private Partida partida;
 
-    Tabuleiro(Peca[][] tab, Partida partida){
-        this.tabuleiro = new Peca[8][8];
+    public Tabuleiro(Peca[][] tab, Partida partida) {
         this.tabuleiro = tab;
         this.partida = partida;
-
         updatePosition();
+    }
+
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public Peca[][] getTabuleiro() {
+        return tabuleiro;
     }
 
     public void updatePosition(){
@@ -33,13 +29,5 @@ class Tabuleiro {
 
     Tabuleiro(Partida partida){
         updatePosition();
-    }
-
-    public Peca[][] getTabuleiro(){
-        return this.tabuleiro;
-    }
-
-    public Object getPartida() {
-        return this.partida;
     }
 }

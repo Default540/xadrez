@@ -19,7 +19,7 @@ public class MainTest {
 
         Tabuleiro tab = new Tabuleiro(t, new Partida());
         tab.updatePosition();
-        Partida partida = new Partida(tab);
+        Partida partida = new Partida();
 
         partida.iniciarJogo(); 
     }
