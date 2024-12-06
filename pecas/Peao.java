@@ -14,8 +14,8 @@ public class Peao extends Peca {
         if (!inTable) return false;
 
         //retorna falso caso a posição final for uma peça da propria cor
-        if (tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()] != null && tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()].getCor() == this.getCor()) return false;
-
+        if(mesmaCor(destino, tabuleiro)) return false;
+        
         int countMove = 1;
         boolean validMoviment = false;
         

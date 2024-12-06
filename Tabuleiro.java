@@ -10,10 +10,12 @@ class Tabuleiro {
         {new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO), new Peao(Cor.BRANCO)},
         {new Torre(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Bispo(Cor.BRANCO), new Rainha(Cor.BRANCO), new Rei(Cor.BRANCO), new Bispo(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Torre(Cor.BRANCO)},
     };
+    private Partida partida;
 
-    Tabuleiro(Peca[][] tab){
+    Tabuleiro(Peca[][] tab, Partida partida){
         this.tabuleiro = new Peca[8][8];
         this.tabuleiro = tab;
+        this.partida = partida;
 
         updatePosition();
     }
@@ -29,11 +31,15 @@ class Tabuleiro {
     }
 
 
-    Tabuleiro(){
+    Tabuleiro(Partida partida){
         updatePosition();
     }
 
     public Peca[][] getTabuleiro(){
         return this.tabuleiro;
+    }
+
+    public Object getPartida() {
+        return this.partida;
     }
 }

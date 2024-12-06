@@ -23,5 +23,9 @@ abstract class Peca {
         return this.posicao;
     }
 
+    public boolean mesmaCor(Posicao destino, Tabuleiro tabuleiro){
+        Peca pecaDestino = tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()];
+        return pecaDestino != null && pecaDestino.getCor() == this.getCor();
+    }
     public abstract boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro);
 }

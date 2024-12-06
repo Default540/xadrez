@@ -17,7 +17,7 @@ public class MainTest {
             {new Torre(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Bispo(Cor.BRANCO), new Rainha(Cor.BRANCO), new Rei(Cor.BRANCO),  new Bispo(Cor.BRANCO), new Cavalo(Cor.BRANCO), new Torre(Cor.BRANCO)},
         };
 
-        Tabuleiro tab = new Tabuleiro(t);
+        Tabuleiro tab = new Tabuleiro(t, new Partida());
         tab.updatePosition();
         Partida partida = new Partida(tab);
 

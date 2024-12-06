@@ -18,9 +18,7 @@ public class Bispo extends Peca {
             return false;
 
         // retorna falso caso a posição final for uma peça da propria cor
-        if (tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()] != null
-                && tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()].getCor() == this.getCor())
-            return false;
+        if(mesmaCor(destino, tabuleiro)) return false;
 
         boolean validMoviment = false;
 

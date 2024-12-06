@@ -14,7 +14,7 @@ class Partida {
 
         this.gameStatus = GameStatus.INGAME;
         this.historico = new ArrayList<>();
-        this.tabuleiro = new Tabuleiro();
+        this.tabuleiro = new Tabuleiro(this);
         this.jogador1 = new Jogador(Cor.BRANCO);
         this.jogador2 = new Jogador(Cor.PRETO);
         
@@ -83,7 +83,7 @@ class Partida {
 
                     if (inXequeMate()) {
                         this.gameStatus = GameStatus.XEQUEMATE;
-                    }else if (inXeque()) {
+                    }else if (inXeque(Cor.BRANCO) || inXeque(Cor.PRETO)) {
                         this.gameStatus = GameStatus.XEQUE;
                     }else{
                         this.gameStatus = GameStatus.INGAME;
@@ -157,17 +157,32 @@ class Partida {
         return countKings < 2;
     }
     
-    public boolean inXeque(){
-        Peca reiInimigo = null;
+    public boolean inXeque(Cor corRei){
+        Peca rei = null;
         for (int index = 0; index < tabuleiro.getTabuleiro().length; index++) {
             for (int i = 0; i < tabuleiro.getTabuleiro()[index].length; i++) {
-                if (tabuleiro.getTabuleiro()[index][i] != null && tabuleiro.getTabuleiro()[index][i].getClass().getName().equals("Rei") && tabuleiro.getTabuleiro()[index][i].getCor() != turno.getJogador().getCor()) {
-                    reiInimigo = tabuleiro.getTabuleiro()[index][i];
+                Peca peca = tabuleiro.getTabuleiro()[index][i];
+                if (peca != null && peca instanceof Rei && peca.getCor() == corRei) {
+                    rei = peca;
+                    break;
                 }
             }
         }
-        
-        
-        return turno.getPecaMovida().movimentoValido(reiInimigo.getPosicao(),tabuleiro);
+    
+        if (rei == null) {
+            return false;
+        }
+    
+        Posicao posicaoRei = rei.getPosicao();
+        for (int index = 0; index < tabuleiro.getTabuleiro().length; index++) {
+            for (int i = 0; i < tabuleiro.getTabuleiro()[index].length; i++) {
+                Peca peca = tabuleiro.getTabuleiro()[index][i];
+                if (peca != null && peca.getCor() != corRei && peca.movimentoValido(posicaoRei, tabuleiro)) {
+                    return true;
+                }
+            }
+        }
+    
+        return false;
     }
 }
