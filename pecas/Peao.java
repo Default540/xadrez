@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Peao extends Peca {
     
     Peao(Cor c){
@@ -63,10 +65,49 @@ public class Peao extends Peca {
             if (isInCheckAfterMove(destino, tabuleiro)) return false;
         }
 
+        //promove o peão
+        if (validMoviment && (destino.getPosicaoX() == 0 || destino.getPosicaoX() == 7)) {
+            promover(destino, tabuleiro);
+        }
         return validMoviment;
     }
 
-    
+    private void promover(Posicao destino, Tabuleiro tabuleiro) {
+        // Remove o peão do tabuleiro
+        tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()] = null;
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Escolha a peça para promover o peão: " +
+                "\n1 - Rainha: 1" +
+                "\n2 - Torre: 2" +
+                "\n3 - Bispo: 3" +
+                "\n4 - Cavalo: 4");
+        s.nextInt();
+
+        Peca novaPeca = null;
+        switch (s.nextInt()) {
+            case 1:
+                novaPeca = new Rainha(this.getCor());
+                break;
+            case 2:
+                novaPeca = new Torre(this.getCor());
+                break;
+            case 3:
+                novaPeca = new Bispo(this.getCor());
+                break;
+            case 4:
+                novaPeca = new Cavalo(this.getCor());
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
+        }
+        
+        // Coloca a nova peça no tabuleiro
+        tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()] = novaPeca;
+
+        System.out.println("Peão promovido a " + novaPeca.getClass().getSimpleName());
+    }
 
     
     @Override

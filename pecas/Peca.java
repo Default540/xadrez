@@ -28,8 +28,10 @@ abstract class Peca {
         Peca pecaDestino = tabuleiro.getTabuleiro()[destino.getPosicaoX()][destino.getPosicaoY()];
         return pecaDestino != null && pecaDestino.getCor() == this.getCor();
     }
+    
     public abstract boolean movimentoValido(Posicao destino, Tabuleiro tabuleiro);
 
+    // Verifica se o rei está em xeque após o movimento
     protected boolean isInCheckAfterMove(Posicao destino, Tabuleiro tabuleiro) {
          
          Posicao posicaoAtual = this.getPosicao();
